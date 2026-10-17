@@ -12,6 +12,11 @@ Node backend for [Xboard](https://github.com/cedar2025/Xboard). Supports `sing-b
 - Deploy modes: node mode, machine mode, standalone mode
 - Multi-instance: single process binding multiple panels / nodes
 
+Maintained independently on the `muyichun` branch. Upstream changes are reviewed and
+cherry-picked manually; Go module paths retain their upstream names for compatibility.
+
+See [维护、发布与手动升级](docs-maintenance.md).
+
 ## Install
 
 ### Docker
@@ -19,28 +24,21 @@ Node backend for [Xboard](https://github.com/cedar2025/Xboard). Supports `sing-b
 ```bash
 docker run -d --restart=always --network=host \
   -e apiHost=https://panel.com -e apiKey=TOKEN -e nodeID=1 \
-  ghcr.io/cedar2025/xboard-node:latest
-```
-
-### Docker Compose
-
-```bash
-git clone -b compose --depth 1 https://github.com/cedar2025/xboard-node.git
-cd xboard-node
-vim config/config.yml   # set panel.url / token / node_id
-docker compose up -d
+  ghcr.io/muyichun/xboard-node:latest
 ```
 
 ### Installer (Linux systemd)
 
 ```bash
 # Node mode
-curl -fsSL https://raw.githubusercontent.com/cedar2025/xboard-node/dev/install.sh | \
+curl -fsSL https://raw.githubusercontent.com/muyichun/Xboard-Node/muyichun/install.sh | \
   sudo bash -s -- --mode node --panel https://panel.example.com --token TOKEN --node-id 1
 
 # Machine mode
-curl -fsSL https://raw.githubusercontent.com/cedar2025/xboard-node/dev/install.sh | \
+curl -fsSL https://raw.githubusercontent.com/muyichun/Xboard-Node/muyichun/install.sh | \
   sudo bash -s -- --mode machine --panel https://panel.example.com --token TOKEN --machine-id 1
+
+```
 
 ## xbctl
 
